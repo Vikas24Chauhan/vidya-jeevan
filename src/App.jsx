@@ -1,23 +1,18 @@
 import { useState } from "react";
 import "./App.css";
-import Hero from "./components/hero/Hero";
-import Marquee from "./components/marquee/Marquee";
-import Mentor from "./components/mentor/Mentor";
-import Facilities from "./components/facilities/Facilities";
-import Events from "./components/events/Events";
-import ScrollReveal from "./components/scrollReveal/ScrollReveal";
-import Feedback from "./components/feedback/Feedback";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import ReviewPage from "./pages/ReviewPage";
 
 function App() {
   return (
     <>
-      <Hero />
-      <Marquee />
-      <Mentor />
-      <Facilities />
-      <Events />
-      <ScrollReveal />
-      <Feedback />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/reviews" element={<ReviewPage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
