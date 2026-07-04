@@ -1,0 +1,255 @@
+.feedback-section {
+  padding: 80px 20px;
+  background: #f8f9fa;
+  overflow: hidden;
+}
+
+.feedback-title {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 60px;
+  color: #27187e;
+}
+
+.feedback-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.feedback-row {
+  overflow: hidden;
+  position: relative;
+}
+
+.feedback-track {
+  display: flex;
+  gap: 20px;
+  width: fit-content;
+}
+
+/* Desktop track - shows first/last 10 */
+.desktop-track {
+  display: flex;
+  gap: 20px;
+  animation: scrollLeft 120s linear infinite;
+}
+
+/* Reverse animation for second row */
+.feedback-track-reverse {
+  animation: scrollRight 120s linear infinite;
+}
+
+/* Mobile track - shows all 20 */
+.mobile-track {
+  display: none;
+  gap: 20px;
+  animation: scrollLeft 80s linear infinite;
+}
+
+/* Pause on hover */
+.feedback-track.paused .desktop-track,
+.feedback-track.paused .mobile-track {
+  animation-play-state: paused;
+}
+
+.feedback-track-reverse.paused {
+  animation-play-state: paused;
+}
+
+/* Animations */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.feedback-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
+  min-width: 380px;
+  max-width: 380px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+.feedback-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.feedback-text {
+  color: #666;
+  line-height: 1.7;
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+.feedback-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 3px solid #5b7cff;
+}
+
+.feedback-author-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.feedback-author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-author-name {
+  color: #5b7cff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.feedback-fog-left,
+.feedback-fog-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 150px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.feedback-fog-left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(248, 249, 250, 1) 0%,
+    rgba(248, 249, 250, 0.95) 20%,
+    rgba(248, 249, 250, 0.7) 50%,
+    rgba(248, 249, 250, 0) 100%
+  );
+}
+
+.feedback-fog-right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(248, 249, 250, 1) 0%,
+    rgba(248, 249, 250, 0.95) 20%,
+    rgba(248, 249, 250, 0.7) 50%,
+    rgba(248, 249, 250, 0) 100%
+  );
+}
+
+.feedback-btn {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.feedback-btn a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 8px 16px;
+  color: #ff8600;
+  border: 2px solid #ff8600;
+  background-color: transparent;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.feedback-btn a:hover {
+  color: #ffffff;
+  background-color: #ff8600;
+}
+
+/* -------------------------- Responsive Styles ---------------------------- */
+
+@media (max-width: 1024px) {
+  .feedback-title {
+    font-size: 36px;
+  }
+
+  .feedback-card {
+    min-width: 320px;
+    max-width: 320px;
+    min-height: 240px;
+    padding: 24px;
+  }
+}
+
+@media (max-width: 800px) {
+  .desktop-track {
+    display: none;
+  }
+
+  .feedback-card {
+    min-width: 400px;
+    max-width: 400px;
+    padding: 20px;
+    min-height: 200px;
+  }
+
+  .mobile-track {
+    display: flex;
+    animation-duration: 180s;
+  }
+
+  .feedback-row-second {
+    display: none;
+  }
+
+  .feedback-fog-left,
+  .feedback-fog-right {
+    display: none;
+  }
+
+  .feedback-title {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 500px) {
+  .feedback-section {
+    padding: 60px 16px;
+  }
+
+  .feedback-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+  }
+
+  .feedback-text {
+    font-size: 14px;
+  }
+}
